@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.search-box{
+display:flex;
+text-align:center;
+text-justify:center;
+}
+.search-box input{
+width:300px;
+font-size:26px;
+}
+.search-box img{
+  margin-left:10px;
+  width:55px;
+  height:55px;
+  }
