@@ -13,8 +13,14 @@ const [searchTerm, setSearchTerm] = useState('');
 //search pokemon function
 
 const search = async () => {
+  const lowercaseSearchTerm = searchTerm.toLowerCase();
+console.log(searchTerm);
+if (lowercaseSearchTerm.trim() === ''){
+  setPokemon(null);
+  return;
+}
   try {
-const response = await fetch(`${APIURL}${searchTerm}`);
+const response = await fetch(`${APIURL}${lowercaseSearchTerm}`);
 if (!response.ok) {
   throw new Error('Pokemon not found');
 }
@@ -42,6 +48,11 @@ useEffect(()=>{
         placeholder="Type a pokemon name here"
         onChange={(event) => setSearchTerm(event.target.value)}
         value={searchTerm}
+        onKeyDown={(event)=> {
+          if (event.key === 'Enter') {
+            search();
+          }
+        }}
         />
         <img src={pballicon} 
         alt="pokeball search icon"
@@ -50,9 +61,9 @@ useEffect(()=>{
 
         </div>
 
-        <PokemonCard pokemon={pokemon}/>
+       
       </header>
-
+      <PokemonCard pokemon={pokemon}/>
 
 
     </div>
