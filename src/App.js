@@ -13,9 +13,9 @@ const [searchTerm, setSearchTerm] = useState('');
 //search pokemon function
 
 const search = async () => {
-  const lowercaseSearchTerm = searchTerm.toLowerCase();
+  const lowercaseSearchTerm = searchTerm.toLowerCase().trim();
 console.log(searchTerm);
-if (lowercaseSearchTerm.trim() === ''){
+if (lowercaseSearchTerm === ''){
   setPokemon(null);
   return;
 }
@@ -63,8 +63,7 @@ useEffect(()=>{
 
        
       </header>
-      <PokemonCard pokemon={pokemon}/>
-
+      { pokemon !== '' && <PokemonCard pokemon={pokemon}/> }
 
     </div>
   );
